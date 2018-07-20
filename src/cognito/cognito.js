@@ -1,5 +1,5 @@
 import { CognitoUserPool, CognitoUser, AuthenticationDetails, CognitoUserAttribute } from 'amazon-cognito-identity-js'
-import { Config, CognitoIdentityCredentials } from 'aws-sdk'
+import { Config } from 'aws-sdk'
 
 export default class Cognito {
   configure (config) {
@@ -12,9 +12,6 @@ export default class Cognito {
       })
     }
     Config.region = config.region
-    Config.credentials = new CognitoIdentityCredentials({
-      IdentityPoolId: config.IdentityPoolId
-    })
     this.options = config
   }
 
@@ -82,7 +79,7 @@ export default class Cognito {
     return new Promise((resolve, reject) => {
       cognitoUser.authenticateUser(authenticationDetails, {
         onSuccess: result => {
-          // 実際にはクレデンシャルなどをここで取得する(今回は省略)
+          console.log('token:' + result.getAccessToken().getJwtToken())
           resolve(result)
         },
         onFailure: err => {
