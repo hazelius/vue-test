@@ -1,10 +1,18 @@
 # vue-test
 
-> A Vue.js project
+## プロジェクトの作成
+
+vue-cli のインストール
+
+    npm install -g vue-cli
+
+プロジェクトの作成
+
+    vue init webpack vue-test
 
 ## Build Setup
 
-``` bash
+```bash
 # install dependencies
 npm install
 
